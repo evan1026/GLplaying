@@ -1,6 +1,6 @@
 #include <iostream>
 #include <sstream>
-#include "Logger/Logger.hpp"
+#include <Logger/Logger.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/System.hpp>
@@ -13,6 +13,8 @@
 using namespace std;
 
 int main(){
+
+    logger.log("yay");
 
     sf::Window window(sf::VideoMode(800, 600), "GL", sf::Style::Default);
     sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
@@ -105,7 +107,7 @@ void draw(){
         glEnd();
         glPopMatrix();
 
-    }    
+    }
 }
 
 void doTranslations(sf::Window & window){
