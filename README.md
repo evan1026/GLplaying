@@ -1,7 +1,7 @@
 GLplaying
 =========
 
-Requires evan1026/Logger. Follow install directions there.
+Requires [my logger](https://github.com/evan1026/Logger). Follow install directions there.
 
 Just messing around with OpenGL
 
