@@ -9,13 +9,13 @@ class Cube{
         static const float model[6][12];
         static const float color[6][3];
 
-        Cube(sf::Vector3f position, sf::Vector3f rotation) : 
+        Cube(const sf::Vector3f& position, const sf::Vector3f& rotation) : 
             _position(position),_rotation(rotation) {}
 
-        sf::Vector3f getPosition();
-        void setPosition(sf::Vector3f position);
-        sf::Vector3f getRotation();
-        void setRotation(sf::Vector3f rotation);
+        sf::Vector3f& getPosition();
+        void setPosition(const sf::Vector3f& position);
+        sf::Vector3f& getRotation();
+        void setRotation(const sf::Vector3f& rotation);
         
 };
 

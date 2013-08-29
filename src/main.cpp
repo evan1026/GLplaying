@@ -14,10 +14,9 @@ using namespace std;
 
 int main(){
 
-    logger.log("yay");
-
     sf::Window window(sf::VideoMode(800, 600), "GL", sf::Style::Default);
-    sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+    screenMiddle = sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2);
+    sf::Mouse::setPosition(screenMiddle, window);
     window.setMouseCursorVisible(false);
  
     glClearDepth(1.f);
@@ -42,13 +41,14 @@ int main(){
             }
             else if (event.type == sf::Event::Resized){
                 glViewport(0, 0, event.size.width, event.size.height);
+                screenMiddle = sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2);
             }
             else if (event.type == sf::Event::LostFocus){
                 focused = false;
             }
             else if (event.type == sf::Event::GainedFocus){
                 focused = true;
-                sf::Mouse::setPosition(sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2), window);
+                sf::Mouse::setPosition(screenMiddle, window);
             }
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
@@ -112,14 +112,13 @@ void draw(){
 
 void doTranslations(sf::Window & window){
     sf::Vector2i mousePos = sf::Mouse::getPosition(window);
-    sf::Vector2i middle = sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2);
-    sf::Vector2i diff = mousePos - middle;
+    sf::Vector2i diff = mousePos - screenMiddle;
 
     cameraRot += sf::Vector3f(diff.y, diff.x, 0.f);
     if (cameraRot.x > 90) cameraRot.x = 90;
     else if (cameraRot.x < -90) cameraRot.x = -90;
     
-    sf::Mouse::setPosition(middle, window);
+    sf::Mouse::setPosition(screenMiddle, window);
 
     bool left = sf::Keyboard::isKeyPressed(sf::Keyboard::A);
     bool right = sf::Keyboard::isKeyPressed(sf::Keyboard::D);

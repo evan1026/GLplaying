@@ -1,16 +1,16 @@
 #include <SFML/System.hpp>
 #include "Cube.hpp"
 
-sf::Vector3f Cube::getPosition(){
+sf::Vector3f& Cube::getPosition(){
     return _position;
 }
-void Cube::setPosition(sf::Vector3f position){
+void Cube::setPosition(const sf::Vector3f& position){
     _position = position;
 }
-sf::Vector3f Cube::getRotation(){
+sf::Vector3f& Cube::getRotation(){
     return _rotation;
 }
-void Cube::setRotation(sf::Vector3f rotation){
+void Cube::setRotation(const sf::Vector3f& rotation){
     _rotation = rotation;
 }
 
