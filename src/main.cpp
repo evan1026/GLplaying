@@ -13,12 +13,20 @@
 using namespace std;
 
 int main(){
-
-    sf::Window window(sf::VideoMode(800, 600), "GL", sf::Style::Default);
+    
+    logger.logNoEndl("Initializing window...");
+    sf::ContextSettings settings;
+    settings.depthBits = 24;
+    sf::Window window(sf::VideoMode(800, 600), "GL", sf::Style::Default, settings);
+    logger.continueln("done!");
+    
+    logger.logNoEndl("Handling mouse...");
     screenMiddle = sf::Vector2i(window.getSize().x / 2, window.getSize().y / 2);
     sf::Mouse::setPosition(screenMiddle, window);
     window.setMouseCursorVisible(false);
+    logger.continueln("done!");
  
+    logger.logNoEndl("Setting up GL...");
     glClearDepth(1.f);
     glClearColor(0.f, 0.f, 0.f, 0.f);
    
@@ -28,10 +36,14 @@ int main(){
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     gluPerspective(90.f, 1.f, 1.f, 5000.f);
+    logger.continueln("done!");
 
+    logger.logNoEndl("Initializing cubes...");
     cubes.push_back(Cube(sf::Vector3f(0.f, 0.f, 0.f), sf::Vector3f(0.f, 0.f, 0.f)));
     cubes.push_back(Cube(sf::Vector3f(50.f, 50.f, 50.f), sf::Vector3f(20.f, 40.f, 60.f)));
-    
+    logger.continueln("done!");    
+
+    logger.logNoEndl("Looping until told to stop...");
     bool running = true;
     while (running){
         sf::Event event;
@@ -64,6 +76,8 @@ int main(){
 
         window.display();
     }
+    logger.continueln("done!");
+    logger.log("Exitting...goodbye!");
 }
 
 string intToString(int a){
