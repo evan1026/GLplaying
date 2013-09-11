@@ -1,7 +1,7 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
-Logger logger;
+Logger logger(true);
 sf::Vector3f cameraPos = sf::Vector3f(0.f, 0.f, -200.f);
 sf::Vector3f cameraRot = sf::Vector3f(0.f, 0.f, 0.f);
 sf::Vector2i screenMiddle;
