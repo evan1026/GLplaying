@@ -8,7 +8,8 @@
 #include "Cube.hpp"
 #include "main.hpp"
 
-#define PI 3.14159265
+#define PI    3.14159265
+#define SPEED 10
 
 using namespace std;
 
@@ -18,6 +19,7 @@ int main(){
     sf::ContextSettings settings;
     settings.depthBits = 24;
     sf::Window window(sf::VideoMode(800, 600), "GL", sf::Style::Default, settings);
+    window.setVerticalSyncEnabled(true);
     logger.continueln("done!");
     
     logger.logNoEndl("Handling mouse...");
@@ -141,22 +143,22 @@ void doTranslations(sf::Window & window){
     bool forward = sf::Keyboard::isKeyPressed(sf::Keyboard::W);
     bool backward = sf::Keyboard::isKeyPressed(sf::Keyboard::S);
 
-    cameraPos.y += (up) ? -10 : (down) ? 10 : 0;
+    cameraPos.y += (up) ? -SPEED : (down) ? SPEED : 0;
     if (forward){
-        cameraPos.x += -10 * sinDeg(cameraRot.y);
-        cameraPos.z += 10 * cosDeg(cameraRot.y);
+        cameraPos.x += -SPEED * sinDeg(cameraRot.y);
+        cameraPos.z += SPEED * cosDeg(cameraRot.y);
     }
     else if (backward){
-        cameraPos.x -= -10 * sinDeg(cameraRot.y);
-        cameraPos.z -= 10 * cosDeg(cameraRot.y);
+        cameraPos.x -= -SPEED * sinDeg(cameraRot.y);
+        cameraPos.z -= SPEED * cosDeg(cameraRot.y);
     }
     if (left){
-        cameraPos.x += -10 * sinDeg(cameraRot.y - 90);
-        cameraPos.z += 10 * cosDeg(cameraRot.y - 90);
+        cameraPos.x += -SPEED * sinDeg(cameraRot.y - 90);
+        cameraPos.z += SPEED * cosDeg(cameraRot.y - 90);
     }
     else if (right){
-        cameraPos.x += -10 * sinDeg(cameraRot.y + 90);
-        cameraPos.z += 10 * cosDeg(cameraRot.y + 90);
+        cameraPos.x += -SPEED * sinDeg(cameraRot.y + 90);
+        cameraPos.z += SPEED * cosDeg(cameraRot.y + 90);
     }
 }
 
