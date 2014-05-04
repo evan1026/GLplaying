@@ -1,6 +1,8 @@
 #ifndef CUBE_HPP
 #define CUBE_HPP
 
+#include <SFML/System.hpp>
+
 class Cube{
     sf::Vector3f _position;
     sf::Vector3f _rotation;
@@ -16,7 +18,7 @@ class Cube{
         void setPosition(const sf::Vector3f& position);
         sf::Vector3f& getRotation();
         void setRotation(const sf::Vector3f& rotation);
-        
+
 };
 
 #endif

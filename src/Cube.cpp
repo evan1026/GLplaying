@@ -1,4 +1,3 @@
-#include <SFML/System.hpp>
 #include "Cube.hpp"
 
 sf::Vector3f& Cube::getPosition(){

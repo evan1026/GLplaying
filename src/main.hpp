@@ -1,6 +1,13 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
+#include <Logger/Logger.hpp>
+#include <SFML/Window.hpp>
+#include <SFML/OpenGL.hpp>
+#include <SFML/System.hpp>
+#include <cmath>
+#include "Cube.hpp"
+
 Logger logger = Logger();
 sf::Vector3f cameraPos = sf::Vector3f(0.f, 0.f, -200.f);
 sf::Vector3f cameraRot = sf::Vector3f(0.f, 0.f, 0.f);
